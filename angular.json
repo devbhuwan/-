@@ -120,6 +120,46 @@
           }
         }
       }
+    },
+    "container": {
+      "root": "projects/container",
+      "sourceRoot": "projects/container/src",
+      "projectType": "library",
+      "prefix": "apsara",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-ng-packagr:build",
+          "options": {
+            "tsConfig": "projects/container/tsconfig.lib.json",
+            "project": "projects/container/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "project": "projects/container/ng-package.prod.json"
+            }
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/container/src/test.ts",
+            "tsConfig": "projects/container/tsconfig.spec.json",
+            "karmaConfig": "projects/container/karma.conf.js"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "projects/container/tsconfig.lib.json",
+              "projects/container/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
     }
   },
   "defaultProject": "apsara"
